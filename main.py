@@ -1,95 +1,44 @@
-""" Number Guessing Game
-
-----------------------------------------
-
-"""
-import os
 import random
+import math
+# Taking Inputs
+lower = int(input("Enter Lower bound:- "))
 
-attempts_list = []
+# Taking Inputs
+upper = int(input("Enter Upper bound:- "))
 
-def show_score():
+# generating random number between
+# the lower and upper
+x = random.randint(lower, upper)
+print("\n\tYou've only ",
+	round(math.log(upper - lower + 1, 2)),
+	" chances to guess the integer!\n")
 
-if len(attempts_list) <= 0:
+# Initializing the number of guesses.
+count = 0
 
-print("There is currently no high score, it's yours for the taking!")
+# for calculation of minimum number of
+# guesses depends upon range
+while count < math.log(upper - lower + 1, 2):
+	count += 1
 
-else:
+	# taking guessing number as input
+	guess = int(input("Guess a number:- "))
 
-print("The current high score is {} attempts".format(min(attempts_list)))
+	# Condition testing
+	if x == guess:
+		print("Congratulations you did it in ",
+			count, " try")
+		# Once guessed, loop will break
+		break
+	elif x > guess:
+		print("You guessed too small!")
+	elif x < guess:
+		print("You Guessed too high!")
 
-def start_game():
+# If Guessing is more than required guesses,
+# shows this output.
+if count >= math.log(upper - lower + 1, 2):
+	print("\nThe number is %d" % x)
+	print("\tBetter Luck Next time!")
 
-random_number = int(random.randint(1, 10))
-
-print("Hello traveler! Welcome to the game of guesses!")
-
-player_name = input("What is your name? ")
-
-wanna_play = input("Hi, {}, would you like to play the guessing game? (Enter Yes/No) ".format(player_name))
-
-# Where the show_score function USED to be
-
-attempts = 0
-
-show_score()
-
-while wanna_play.lower() == "yes":
-
-try:
-
-guess = input("Pick a number between 1 and 10 ")
-
-if int(guess) < 1 or int(guess) > 10:
-
-raise ValueError("Please guess a number within the given range")
-
-if int(guess) == random_number:
-
-print("Nice! You got it!")
-
-attempts += 1
-
-attempts_list.append(attempts)
-
-print("It took you {} attempts".format(attempts))
-
-play_again = input("Would you like to play again? (Enter Yes/No) ")
-
-attempts = 0
-
-show_score()
-
-random_number = int(random.randint(1, 10))
-
-if play_again.lower() == "no":
-
-print("That's cool, have a good one!")
-
-break
-
-elif int(guess) > random_number:
-
-print("It's lower")
-
-attempts += 1
-
-elif int(guess) < random_number:
-
-print("It's higher")
-
-attempts += 1
-
-except ValueError as err:
-
-print("Oh no!, that is not a valid value. Try again...")
-
-print("({})".format(err))
-
-else:
-
-print("That's cool, have a good one!")
-
-if __name__ == '__main__':
-
-start_game()
+# Better to use This source Code on pycharm!
