@@ -49,3 +49,13 @@ def handle_error():
 
 def func(a1, a2, a3):
     {a1: 1, a2: 2, a1: 3}  # Noncompliant.
+
+    username = 'admin'
+    password = 'admin'  # Sensitive
+    usernamePassword = 'user=admin&password=admin'  # Sensitive
+
+import os
+
+def send_signal(pid, sig, pgid):
+    os.kill(pid, sig)  # Sensitive
+    os.killpg(pgid, sig)  # Sensitive
