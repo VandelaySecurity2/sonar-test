@@ -40,3 +40,12 @@ def foo():
 def handle_error():
     # DEBUG-Solar Code Smell #6
     raise  # Noncompliant. This works but is hard to understand.
+
+
+
+
+
+{"one": 1, "two": 2, "one": 3}  # Noncompliant
+
+def func(a1, a2, a3):
+    {a1: 1, a2: 2, a1: 3}  # Noncompliant.
