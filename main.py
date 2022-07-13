@@ -1,21 +1,16 @@
 import random
 import math
+
 # Taking Inputs
 lower = int(input("Enter Lower bound:- "))
-
-# Mistake #1
-print(undefiend_var)
-
-# Misatake #2
-count = 2
-count = undefiend_var
-count = 'dadd'
 
 # Taking Inputs
 upper = int(input("Enter Upper bound:- "))
 
 # generating random number between
 # the lower and upper
+
+# DEBUG-Sonar Security Hotspot #1
 x = random.randint(lower, upper)
 print("\n\tYou've only ",
 	round(math.log(upper - lower + 1, 2)),
