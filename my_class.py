@@ -80,3 +80,4 @@ def init_ldap():
    connect.bind('cn=root', None) # Noncompliant
 
 # just a comment
+# another comment
